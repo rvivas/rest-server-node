@@ -6,9 +6,14 @@ const app = express();
 const bodyPaser = require('body-parser');
 
 
+
+
 app.use(bodyPaser.urlencoded({ extended: false }));
 app.use(bodyPaser.json());
-app.use(require('./routes/usuario'));
+
+
+// Configuracion global rutas
+app.use(require('./routes/index'));
 
 mongoose.connect(process.env.URLDB, { useNewUrlParser: true, useCreateIndex: true }, (err, resp) => {
     if (err) throw err;
